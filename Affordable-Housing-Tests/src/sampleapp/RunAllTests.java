@@ -1,17 +1,13 @@
 package sampleapp;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import java.time.Duration;
 
-public class RunAllTests {
-    WebDriver driver ;
+public class RunAllTests implements GlobalConstatnts{
+    WebDriver driver;
 
     @Before
     public void setUp() throws InterruptedException {
@@ -25,7 +21,8 @@ public class RunAllTests {
         driver.manage().deleteAllCookies();
 
         //open url and maximize window
-        driver.get("https://genuine-ganache-d769f7.netlify.app");
+        //driver.get(local);
+        driver.get(site);
         Thread.sleep(2500);
         driver.manage().window().maximize();
     }
@@ -40,6 +37,7 @@ public class RunAllTests {
         verifyNeighborhoodRadioButtonReturnsNeighborhoodsToDropBoxRS();
         verifyPropertyLinksRoutesToCorrectProductdetailsPageSP();
     }
+
 
     public void verifyAddressRadioButtonReturnsAddressesToDropBoxRH() throws InterruptedException {
 
@@ -57,8 +55,10 @@ public class RunAllTests {
 
         //validate element label matches expected value
         String a = driver.findElement(By.xpath("//*[@id=\"mat-radio-2\"]/label/span[2]")).getText();
+        System.out.println(a + " list");
         assert(a.contains("Address"));
     }
+
 
     public void verifyNeighborhoodRadioButtonReturnsNeighborhoodsToDropBoxRH() throws InterruptedException {
 
@@ -76,22 +76,26 @@ public class RunAllTests {
 
         //validate element label matches expected value
         String n = driver.findElement(By.xpath("//*[@id=\"mat-radio-3\"]/label/span[2]")).getText();
+        System.out.println(n + " list");
         assert(n.contains("Neighborhood"));
         Thread.sleep(2000);
     }
+
 
     public void verifyPropertyLinksRoutesToCorrectProductdetailsPageHP() throws InterruptedException {
 
         //click on property link
         driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/main/ll-home/div[3]/div/div[2]/mat-table/mat-row[1]/mat-cell[1]/a")).click();
-        Thread.sleep(3000);
+        Thread.sleep(4000);
 
         //get url and verify it matches expected url
+        //String expectedUrl = "http://localhost:4200/products/1";
         String expectedUrl = "https://genuine-ganache-d769f7.netlify.app/products/1";
         String getUrl  = driver.getCurrentUrl();
         System.out.println(getUrl);
         Assert.assertEquals(expectedUrl ,getUrl);
     }
+
 
     public void verifyAddressRadioButtonReturnsAddressesToDropBoxRS() throws InterruptedException {
 
@@ -112,9 +116,11 @@ public class RunAllTests {
 
         //validate element label matches expected value
         String a = driver.findElement(By.xpath("//*[@id=\"mat-radio-5\"]/label/span[2]")).getText();
+        System.out.println(a + " list");
         assert(a.contains("Address"));
         Thread.sleep(2000);
     }
+
 
     public void verifyNeighborhoodRadioButtonReturnsNeighborhoodsToDropBoxRS() throws InterruptedException {
 
@@ -131,22 +137,21 @@ public class RunAllTests {
 
         //validate element label matches expected value
         String n = driver.findElement(By.xpath("//*[@id=\"mat-radio-6\"]/label/span[2]")).getText();
+        System.out.println(n + " list");
         assert(n.contains("Neighborhood"));
         Thread.sleep(2000);
     }
 
+
     public void verifyPropertyLinksRoutesToCorrectProductdetailsPageSP() throws InterruptedException {
 
-        //navigate to search page
-        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/ll-header/header/div/div/div[1]/ul/li[1]/a/span[1]")).click();
-        Thread.sleep(3000);
-
         //click on property link
-        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/main/ll-search-list/div[2]/div/div[2]/mat-table/mat-row[1]/mat-cell[1]/a")).click();
-        Thread.sleep(3000);
+        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/main/ll-search-list/div[2]/div/div[2]/mat-table/mat-row[2]/mat-cell[1]/a")).click();
+        Thread.sleep(4000);
 
         //get the product url and verify it matches expectedUrl
-        String expectedUrl = "https://genuine-ganache-d769f7.netlify.app/products/1";
+        //String expectedUrl = "http://localhost:4200/products/2";
+        String expectedUrl = "https://genuine-ganache-d769f7.netlify.app/products/2";
         String getUrl  = driver.getCurrentUrl();
         System.out.println(getUrl);
         Assert.assertEquals(expectedUrl, getUrl);
@@ -155,6 +160,7 @@ public class RunAllTests {
     //close browser
     @After
     public void closeBrowser(){
+
         driver.close();
     }
 }

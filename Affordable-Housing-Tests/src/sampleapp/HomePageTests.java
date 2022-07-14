@@ -7,11 +7,10 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import java.time.Duration;
 
-public class HomePageTests {
-    WebDriver driver ;
+public class HomePageTests implements GlobalConstatnts{
+    WebDriver driver;
 
     @Before
     public void setUp() throws InterruptedException {
@@ -25,7 +24,8 @@ public class HomePageTests {
         driver.manage().deleteAllCookies();
 
         //open url and maximize window
-        driver.get("https://genuine-ganache-d769f7.netlify.app");
+        driver.get(site);
+        //driver.get(local);
         Thread.sleep(2500);
         driver.manage().window().maximize();
     }
@@ -47,6 +47,7 @@ public class HomePageTests {
 
         //validate element label matches expected value
         String a = driver.findElement(By.xpath("//*[@id=\"mat-radio-2\"]/label/span[2]")).getText();
+        System.out.println(a + " list");
         assert(a.contains("Address"));
         Thread.sleep(2000);
     }
@@ -68,6 +69,7 @@ public class HomePageTests {
 
         //validate element label matches expected value
         String n = driver.findElement(By.xpath("//*[@id=\"mat-radio-3\"]/label/span[2]")).getText();
+        System.out.println(n + " list" );
         assert(n.contains("Neighborhood"));
         Thread.sleep(2000);
     }
@@ -81,6 +83,8 @@ public class HomePageTests {
         Thread.sleep(3000);
 
         //get url and verify it matches expected url
+        //String expectedUrl = "https://genuine-ganache-d769f7.netlify.app/products/1";
+        //String expectedUrl = "http://localhost:4200/products/1";
         String expectedUrl = "https://genuine-ganache-d769f7.netlify.app/products/1";
         String getUrl  = driver.getCurrentUrl();
         System.out.println(getUrl);
