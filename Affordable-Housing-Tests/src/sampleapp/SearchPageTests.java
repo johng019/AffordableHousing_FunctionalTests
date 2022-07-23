@@ -91,16 +91,88 @@ public class SearchPageTests implements GlobalConstatnts{
         Thread.sleep(3000);
 
         //click on property link
-        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/main/ll-search-list/div[2]/div/div[2]/mat-table/mat-row[2]/mat-cell[1]/a")).click();
+        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/main/ll-search-list/div[2]/div/div/mat-table/mat-row[2]/mat-cell[1]/a")).click();
         Thread.sleep(3000);
 
         //get url and verify it matches expected url
-        //String expectedUrl = "https://genuine-ganache-d769f7.netlify.app/products/1";
-        //String expectedUrl = "http://localhost:4200/products/2";
-        String expectedUrl = "https://genuine-ganache-d769f7.netlify.app/products/2";
+        String expectedUrl = site + "products/2";
         String getUrl  = driver.getCurrentUrl();
         System.out.println(getUrl);
         Assert.assertEquals(expectedUrl ,getUrl);
+    }
+
+    @Test
+    public void verifyEnergyRatingSearchCheckboxesAreSelectedAndDeselected() throws InterruptedException {
+        Thread.sleep(2000);
+
+        //navigate to search page
+        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/ll-header/header/div/div/div[1]/ul/li[1]/a/span[1]")).click();
+        Thread.sleep(3000);
+
+        // click on Energy Rating Search to open checkbox options
+        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/main/ll-search-list/div[1]/div/div/div/div/div/div[1]/mat-tab-group/mat-tab-header/div/div/div/div[2]")).click();
+        Thread.sleep(3000);
+
+        //select checkboxes one at a time
+        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/main/ll-search-list/div[1]/div/div/div/div/div/div[1]/mat-tab-group/div/mat-tab-body[2]/div/div[2]/mat-checkbox[1]/label/span[1]")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/main/ll-search-list/div[1]/div/div/div/div/div/div[1]/mat-tab-group/div/mat-tab-body[2]/div/div[2]/mat-checkbox[2]/label/span[1]")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/main/ll-search-list/div[1]/div/div/div/div/div/div[1]/mat-tab-group/div/mat-tab-body[2]/div/div[2]/mat-checkbox[3]/label/span[1]")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/main/ll-search-list/div[1]/div/div/div/div/div/div[1]/mat-tab-group/div/mat-tab-body[2]/div/div[2]/mat-checkbox[4]/label/span[1]")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/main/ll-search-list/div[1]/div/div/div/div/div/div[1]/mat-tab-group/div/mat-tab-body[2]/div/div[2]/mat-checkbox[5]/label/span[1]")).click();
+        Thread.sleep(1000);
+
+        //deselect checkboxes one at a time
+        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/main/ll-search-list/div[1]/div/div/div/div/div/div[1]/mat-tab-group/div/mat-tab-body[2]/div/div[2]/mat-checkbox[5]/label/span[1]")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/main/ll-search-list/div[1]/div/div/div/div/div/div[1]/mat-tab-group/div/mat-tab-body[2]/div/div[2]/mat-checkbox[4]/label/span[1]")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/main/ll-search-list/div[1]/div/div/div/div/div/div[1]/mat-tab-group/div/mat-tab-body[2]/div/div[2]/mat-checkbox[3]/label/span[1]")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/main/ll-search-list/div[1]/div/div/div/div/div/div[1]/mat-tab-group/div/mat-tab-body[2]/div/div[2]/mat-checkbox[2]/label/span[1]")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/main/ll-search-list/div[1]/div/div/div/div/div/div[1]/mat-tab-group/div/mat-tab-body[2]/div/div[2]/mat-checkbox[1]/label/span[1]")).click();
+        Thread.sleep(1000);
+    }
+
+    @Test
+    public void verifyUtilityCostSearchCheckboxesAreSelectedAndDeselected() throws InterruptedException {
+        Thread.sleep(2000);
+
+        //navigate to search page
+        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/ll-header/header/div/div/div[1]/ul/li[1]/a/span[1]")).click();
+        Thread.sleep(3000);
+
+        // click on Energy Rating Search to open checkbox options
+        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/main/ll-search-list/div[1]/div/div/div/div/div/div[1]/mat-tab-group/mat-tab-header/div/div/div/div[3]/div")).click();
+        Thread.sleep(3000);
+
+        //select checkboxes one at a time
+        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/main/ll-search-list/div[1]/div/div/div/div/div/div[1]/mat-tab-group/div/mat-tab-body[3]/div/div[2]/mat-checkbox[1]/label/span[1]")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/main/ll-search-list/div[1]/div/div/div/div/div/div[1]/mat-tab-group/div/mat-tab-body[3]/div/div[2]/mat-checkbox[2]/label/span[1]")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/main/ll-search-list/div[1]/div/div/div/div/div/div[1]/mat-tab-group/div/mat-tab-body[3]/div/div[2]/mat-checkbox[3]/label/span[1]")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/main/ll-search-list/div[1]/div/div/div/div/div/div[1]/mat-tab-group/div/mat-tab-body[3]/div/div[2]/mat-checkbox[4]/label/span[1]")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/main/ll-search-list/div[1]/div/div/div/div/div/div[1]/mat-tab-group/div/mat-tab-body[3]/div/div[2]/mat-checkbox[5]/label/span[1]")).click();
+        Thread.sleep(1000);
+
+        //deselect checkboxes one at a time
+        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/main/ll-search-list/div[1]/div/div/div/div/div/div[1]/mat-tab-group/div/mat-tab-body[3]/div/div[2]/mat-checkbox[5]/label/span[1]")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/main/ll-search-list/div[1]/div/div/div/div/div/div[1]/mat-tab-group/div/mat-tab-body[3]/div/div[2]/mat-checkbox[4]/label/span[1]")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/main/ll-search-list/div[1]/div/div/div/div/div/div[1]/mat-tab-group/div/mat-tab-body[3]/div/div[2]/mat-checkbox[3]/label/span[1]")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/main/ll-search-list/div[1]/div/div/div/div/div/div[1]/mat-tab-group/div/mat-tab-body[3]/div/div[2]/mat-checkbox[2]/label/span[1]")).click();
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/main/ll-search-list/div[1]/div/div/div/div/div/div[1]/mat-tab-group/div/mat-tab-body[3]/div/div[2]/mat-checkbox[1]/label/span[1]")).click();
+        Thread.sleep(1000);
     }
 
     //close browser
