@@ -83,9 +83,7 @@ public class HomePageTests implements GlobalConstatnts{
         Thread.sleep(3000);
 
         //get url and verify it matches expected url
-        //String expectedUrl = "https://genuine-ganache-d769f7.netlify.app/products/1";
-        //String expectedUrl = "http://localhost:4200/products/1";
-        String expectedUrl = "https://genuine-ganache-d769f7.netlify.app/products/1";
+        String expectedUrl = site + "products/1";
         String getUrl  = driver.getCurrentUrl();
         System.out.println(getUrl);
         Assert.assertEquals(expectedUrl ,getUrl);
