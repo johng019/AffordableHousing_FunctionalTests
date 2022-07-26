@@ -5,6 +5,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.time.Duration;
 
@@ -135,6 +136,29 @@ public class RunAllTests implements GlobalConstatnts{
         System.out.println(n + " list");
         assert(n.contains("Neighborhood"));
         Thread.sleep(2000);
+    }
+
+    @Test
+    public void verifyAutocompleteFunctionsInTextbox() throws InterruptedException {
+        Thread.sleep(3000);
+
+        //navigate to search page
+        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/ll-header/header/div/div/div[1]/ul/li[1]/a/span[1]")).click();
+        Thread.sleep(2000);
+
+        //click in dropdown box
+        WebElement e = driver.findElement(By.xpath("//*[@id=\"mat-input-1\"]"));
+        e.sendKeys("B");
+        Thread.sleep(1000);
+        e.sendKeys("e");
+        Thread.sleep(1000);
+        e.sendKeys("n");
+        Thread.sleep(4500);
+        /*
+        The user should see only results that contain the string "Ben"
+        The user should only see map marker results for properties that contain the string "Ben"
+        Observation of success only.No further action needed.
+         */
     }
 
     @Test
