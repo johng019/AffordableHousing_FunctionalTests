@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.time.Duration;
 
-public class HomePageTests implements GlobalConstatnts{
+public class HomePageTests implements IGlobalConstants{
     WebDriver driver;
 
     @Before

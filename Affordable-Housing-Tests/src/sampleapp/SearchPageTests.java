@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.time.Duration;
 
-public class SearchPageTests implements GlobalConstatnts{
+public class SearchPageTests implements IGlobalConstants{
     WebDriver driver;
 
     @Before
@@ -58,6 +58,37 @@ public class SearchPageTests implements GlobalConstatnts{
     }
 
     @Test
+    public void verifyAddressesInDropBoxFiltersWhenSelected() throws InterruptedException {
+        Thread.sleep(3000);
+
+        //navigate to search page
+        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/ll-header/header/div/div/div[1]/ul/li[1]/a/span[1]")).click();
+        Thread.sleep(2000);
+
+        //click in address radio button
+        driver.findElement(By.xpath("//*[@id=\"mat-radio-5\"]/label/span[1]/span[2]")).click();
+        Thread.sleep(2000);
+
+        //click in dropdown box
+        driver.findElement(By.xpath("//*[@id=\"mat-input-1\"]")).click();
+        Thread.sleep(2500);
+
+        //click 9405 Dowden Dr
+        driver.findElement(By.xpath("/html/body/div/div/div/div/mat-option[4]")).click();
+        Thread.sleep(3000);
+
+        //click on property link
+        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/main/ll-search-list/div[2]/div/div/mat-table/mat-row/mat-cell[1]/a")).click();
+        Thread.sleep(4000);
+
+        //get url and verify it matches expected url
+        String expectedUrl = site + "products/4";
+        String getUrl  = driver.getCurrentUrl();
+        System.out.println(getUrl);
+        Assert.assertEquals(expectedUrl ,getUrl);
+    }
+
+    @Test
     public void verifyNeighborhoodRadioButtonReturnsNeighborhoodsToDropBox() throws InterruptedException {
         Thread.sleep(3000);
 
@@ -84,22 +115,24 @@ public class SearchPageTests implements GlobalConstatnts{
     }
 
     @Test
-    public void verifyPropertyLinkRoutesToCorrectProductdetailsPage() throws InterruptedException {
-        Thread.sleep(2000);
+    public void verifyNeighborhoodInDropboxFiltersWhenSelected() throws InterruptedException {
+        Thread.sleep(3000);
 
         //navigate to search page
         driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/ll-header/header/div/div/div[1]/ul/li[1]/a/span[1]")).click();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
-        //click on property link
-        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/main/ll-search-list/div[2]/div/div/mat-table/mat-row[2]/mat-cell[1]/a")).click();
-        Thread.sleep(3000);
+        //click in neighborhood radio button
+        driver.findElement(By.xpath("//*[@id=\"mat-radio-6\"]/label/span[1]/span[2]")).click();
+        Thread.sleep(2000);
 
-        //get url and verify it matches expected url
-        String expectedUrl = site + "products/2";
-        String getUrl  = driver.getCurrentUrl();
-        System.out.println(getUrl);
-        Assert.assertEquals(expectedUrl ,getUrl);
+        //click in dropdown box
+        driver.findElement(By.xpath("//*[@id=\"mat-input-2\"]")).click();
+        Thread.sleep(2500);
+
+        //Select College Park
+        driver.findElement(By.xpath("/html/body/div/div/div/div/mat-option[17]")).click();
+        Thread.sleep(3000);
     }
 
     @Test
@@ -174,6 +207,25 @@ public class SearchPageTests implements GlobalConstatnts{
         Thread.sleep(1000);
         driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/main/ll-search-list/div[1]/div/div/div/div/div/div[1]/mat-tab-group/div/mat-tab-body[3]/div/div[2]/mat-checkbox[1]/label/span[1]")).click();
         Thread.sleep(1000);
+    }
+
+    @Test
+    public void verifyPropertyLinkRoutesToCorrectProductdetailsPage() throws InterruptedException {
+        Thread.sleep(2000);
+
+        //navigate to search page
+        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/ll-header/header/div/div/div[1]/ul/li[1]/a/span[1]")).click();
+        Thread.sleep(3000);
+
+        //click on property link
+        driver.findElement(By.xpath("/html/body/ll-root/ll-base-layout/div/mat-sidenav-container/mat-sidenav-content/main/ll-search-list/div[2]/div/div/mat-table/mat-row[2]/mat-cell[1]/a")).click();
+        Thread.sleep(3000);
+
+        //get url and verify it matches expected url
+        String expectedUrl = site + "products/2";
+        String getUrl  = driver.getCurrentUrl();
+        System.out.println(getUrl);
+        Assert.assertEquals(expectedUrl ,getUrl);
     }
 
     @Test
